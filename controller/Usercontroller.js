@@ -4,8 +4,8 @@ import User from '../Modal/Usermodal.js';
 // Create a new user
 export const create = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
-        const newUser = new User({ name, email, password });
+        const { name, email, Address } = req.body;
+        const newUser = new User({ name, email, Address });
         await newUser.save();
         res.status(201).json({ message: "User created successfully", data: newUser });
     } catch (error) {
@@ -73,15 +73,11 @@ export const deleted = async (req, res) => {
 };
 export const findvalue = async (req, res) => {
     try {
-        const id = req.params.id;
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(400).json({ message: "Invalid user ID" });
-        }
-        const userExist = await User.findOne({ _id: id });
+        const userExist = await User.find();
         if (!userExist) {
             return res.status(404).json({ error: "User not found" });
         }
-        res.status(200).json({ data: userExist });
+        res.status(200).json({ message: userExist });
     } catch (error) {
         console.error("Error in findvalue:", error);
         res.status(500).json({ error: "Internal server error" });

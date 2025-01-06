@@ -7,8 +7,8 @@ const router = express.Router();
 router.post('/', create);
 
 // Define other routes
-router.get('/', fetch);
+router.get('/fetch', fetch);
 router.put('/update/:id', update);
 router.delete('/delete/:id', deleted);
-router.get('/find/:id',findvalue);
+router.get('/find',findvalue);
 export default router;

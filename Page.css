@@ -1,0 +1,18 @@
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.responsive-image {
+  max-width: 100px;
+  margin: 5px;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .responsive-image {
+    max-width: 80px;
+  }
+}
